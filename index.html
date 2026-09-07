@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>End Credit</title>
+<meta name="description" content="Three websites, zero web dev degree, one very patient AI — the cast and crew credits.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Chilanka&display=swap');
+
+  :root{
+    --bg:        #0a0908;
+    --bg-raised: #15130f;
+    --gold:      #cfa346;
+    --gold-soft: #8a723a;
+    --gold-dim:  #6b5a34;
+    --paper:     #f2ece0;
+    --muted:     #948c7d;
+    --rule:      #2a251d;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ text-size-adjust:100%; }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse 90% 60% at 50% 0%, #1c1811 0%, var(--bg) 55%),
+      var(--bg);
+    color:var(--paper);
+    font-family:'Work Sans', ui-sans-serif, system-ui, sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:inherit; }
+
+  .hero{
+    max-width:920px;
+    margin:0 auto;
+    padding:7.5rem 1.75rem 4.5rem;
+    text-align:center;
+  }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', ui-monospace, monospace;
+    font-size:.72rem;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--gold-soft);
+    margin:0 0 1.75rem;
+  }
+
+  .wordmark{
+    font-family:'Cinzel', serif;
+    font-weight:900;
+    font-size:clamp(2.8rem, 9vw, 5.6rem);
+    letter-spacing:.05em;
+    line-height:1.05;
+    margin:0;
+    color:var(--paper);
+    text-wrap:balance;
+    background:linear-gradient(100deg, var(--paper) 40%, var(--gold) 50%, var(--paper) 60%);
+    background-size:250% 100%;
+    background-position:0% 0%;
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:sheen 3.4s ease-out .3s 1 both;
+  }
+  @media (prefers-reduced-motion:reduce){
+    .wordmark{ animation:none; background-position:0 0; -webkit-text-fill-color:var(--paper); }
+  }
+  @keyframes sheen{
+    0%{ background-position:120% 0%; }
+    100%{ background-position:0% 0%; }
+  }
+
+  .tagline{
+    max-width:34rem;
+    margin:1.75rem auto 0;
+    font-size:1.05rem;
+    color:var(--muted);
+  }
+  .tagline strong{ color:var(--paper); font-weight:600; }
+
+  .rule{
+    width:min(560px, 70vw);
+    height:1px;
+    margin:2.75rem auto 0;
+    background:linear-gradient(90deg, transparent, var(--gold-dim) 20%, var(--gold) 50%, var(--gold-dim) 80%, transparent);
+    opacity:.7;
+  }
+
+  main{
+    max-width:720px;
+    margin:0 auto;
+    padding:0 1.75rem 6rem;
+  }
+
+  .section-eyebrow{
+    font-family:'JetBrains Mono', ui-monospace, monospace;
+    font-size:.72rem;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--gold-soft);
+    text-align:center;
+    margin:0 0 2.5rem;
+  }
+
+  .credits{
+    display:flex;
+    flex-direction:column;
+  }
+
+  .credit{
+    display:grid;
+    grid-template-columns:9.5rem 1fr;
+    gap:.25rem 1.75rem;
+    padding:1.75rem 1rem;
+    border-top:1px solid var(--rule);
+    border-radius:2px;
+    transition:background-color .25s ease;
+  }
+  .credits .credit:last-child{ border-bottom:1px solid var(--rule); }
+  .credit:hover{ background:var(--bg-raised); }
+
+  .credit .role{
+    font-family:'JetBrains Mono', ui-monospace, monospace;
+    font-size:.68rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--gold-soft);
+    padding-top:.35rem;
+  }
+
+  .credit .body{ min-width:0; }
+
+  .credit h3{
+    font-family:'Cinzel', serif;
+    font-weight:700;
+    font-size:1.32rem;
+    letter-spacing:.02em;
+    margin:0 0 .55rem;
+    color:var(--paper);
+  }
+
+  .credit p{
+    margin:0 0 .9rem;
+    color:var(--muted);
+    font-size:.98rem;
+    max-width:46ch;
+  }
+
+  .visit{
+    display:inline-flex;
+    align-items:center;
+    gap:.4rem;
+    font-family:'JetBrains Mono', ui-monospace, monospace;
+    font-size:.78rem;
+    letter-spacing:.06em;
+    text-decoration:none;
+    color:var(--gold);
+    border-bottom:1px solid var(--gold-dim);
+    padding-bottom:.15rem;
+    transition:color .2s ease, border-color .2s ease, gap .2s ease;
+  }
+  .visit:hover{ color:var(--paper); border-color:var(--paper); gap:.6rem; }
+  .visit .arrow{ transition:transform .2s ease; }
+  .visit:hover .arrow{ transform:translateX(2px); }
+
+  @media (max-width:600px){
+    .credit{ grid-template-columns:1fr; gap:.6rem; }
+    .credit .role{ padding-top:0; }
+  }
+
+  .credit.full{ grid-template-columns:1fr; }
+  .credit.full .role{ padding-top:0; margin:0 0 .6rem; }
+
+  footer{
+    max-width:720px;
+    margin:0 auto;
+    padding:0 1.75rem 5rem;
+    text-align:center;
+  }
+
+  .the-end{
+    font-family:'Chilanka', cursive, 'Cinzel', serif;
+    font-weight:400;
+    font-size:3.2rem;
+    line-height:1;
+    letter-spacing:0;
+    color:var(--gold);
+    margin:0 0 1.25rem;
+  }
+
+  .colophon{
+    font-family:'JetBrains Mono', ui-monospace, monospace;
+    font-size:.78rem;
+    line-height:1.9;
+    color:var(--muted);
+  }
+  .colophon a{
+    color:var(--gold-soft);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+  }
+  .colophon a:hover{ color:var(--gold); border-color:var(--gold-dim); }
+
+  :focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <p class="eyebrow">a one-man, one-AI production</p>
+  <h1 class="wordmark">END CREDIT</h1>
+  <p class="tagline">A growing list of websites. Zero web dev degree. One very patient AI. Roll the list.</p>
+  <div class="rule"></div>
+</section>
+
+<main>
+  <p class="section-eyebrow">Cast</p>
+  <div class="credits">
+
+    <article class="credit">
+      <p class="role">The Farmhouse<br>(Playing Itself)</p>
+      <div class="body">
+        <h3>nazsfarmhouse.in</h3>
+        <p>Rural charm, professionally lit, with a contact form that actually works. No CGI was used — the farmhouse is real.</p>
+        <a class="visit" href="https://nazsfarmhouse.in" target="_blank" rel="noopener">visit site <span class="arrow">&rarr;</span></a>
+      </div>
+    </article>
+
+    <article class="credit">
+      <p class="role">The Whistle Count<br>(A Family Drama)</p>
+      <div class="body">
+        <h3>cookerwhistle.com</h3>
+        <p>Finally settles the one argument every Kerala kitchen never actually needed a website to settle: how many whistles does this dish need?</p>
+        <a class="visit" href="https://cookerwhistle.com" target="_blank" rel="noopener">visit site <span class="arrow">&rarr;</span></a>
+      </div>
+    </article>
+
+    <article class="credit">
+      <p class="role">The Wildcard<br>(Genre Unclear)</p>
+      <div class="body">
+        <h3>createconcepts.in</h3>
+        <p>What does it do? Honestly, still figuring that out. What we can confirm: it has a domain, a homepage, and confidence.</p>
+        <a class="visit" href="https://createconcepts.in" target="_blank" rel="noopener">visit site <span class="arrow">&rarr;</span></a>
+      </div>
+    </article>
+
+  </div>
+
+  <p class="section-eyebrow" style="margin-top:3.5rem;">Crew</p>
+  <div class="credits">
+
+    <article class="credit">
+      <p class="role">Producer, Director<br>&amp; Client Who Keeps<br>Changing Scope</p>
+      <div class="body">
+        <h3>Akbar Ali</h3>
+        <p>Had the ideas, bought the domains, argued with the AI about font choices until 1am.</p>
+        <a class="visit" href="https://www.instagram.com/jstnthormallu/" target="_blank" rel="noopener">follow <span class="arrow">&rarr;</span></a>
+      </div>
+    </article>
+
+    <article class="credit">
+      <p class="role">Co-Writer, VFX &amp;<br>Every Semicolon</p>
+      <div class="body">
+        <h3>Claude</h3>
+        <p>Wrote the code, kept a straight face through the scope changes, never once asked to be credited "and introducing."</p>
+        <a class="visit" href="https://claude.ai" target="_blank" rel="noopener">meet claude <span class="arrow">&rarr;</span></a>
+      </div>
+    </article>
+
+  </div>
+
+  <p class="section-eyebrow" style="margin-top:3.5rem;">Bonus Features</p>
+  <div class="credits">
+
+    <article class="credit full">
+      <p class="role">Frequently Asked</p>
+      <h3>"What's the eligibility to get a website made by you?"</h3>
+      <p>You need to already have my WhatsApp number. That's the entire vetting process.</p>
+    </article>
+
+  </div>
+</main>
+
+<footer>
+  <p class="the-end" lang="ml">നന്ദി</p>
+  <p class="colophon">
+    Malayalam for "thanks," and also the entire ROI on these projects so far
+  </p>
+</footer>
+
+</body>
+</html>
